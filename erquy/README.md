@@ -3,7 +3,7 @@
 
 carte de l'**immo**
 
-[ erquy ] ( erquy.html )
+[ erquy ] ( https://louis-chevallier.github.io/erquy/erquy.html )
 
 
 
