@@ -1,0 +1,3 @@
+
+start :
+	make -f ../makefile
