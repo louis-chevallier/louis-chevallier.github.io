@@ -5,7 +5,11 @@
     const gammaSpan = document.getElementById('gamma');
     const alphaSpan = document.getElementById('alpha');
     const photoImg = document.getElementById('photo-result');
+    const plus = document.getElementById('plus');
+    const moins = document.getElementById('moins');
     const btnOrientation = document.getElementById('btn-orientation-permission');
+
+let offset = 0;
 
     let lastShotTime = 0;
     const SHOT_COOLDOWN = 3000; // ms
@@ -68,12 +72,12 @@
     // --- 3. Gestion de l’orientation du téléphone ---
     function handleOrientation(event) {
       const alpha = event.alpha; // azimut approx.
-      const beta = event.beta;   // inclinaison avant/arrière
+      const beta = event.beta + offset;   // inclinaison avant/arrière
       const gamma = event.gamma; // inclinaison gauche/droite
 
       if (alpha == null || beta == null || gamma == null) return;
 
-      betaSpan.textContent = beta.toFixed(1);
+        betaSpan.textContent = beta.toFixed(1) ;
       gammaSpan.textContent = gamma.toFixed(1);
       alphaSpan.textContent = alpha.toFixed(1);
 
@@ -154,4 +158,10 @@
       setupOrientation();
     });
 
-    window.addEventListener('resize', resizeOverlay);
+plus.addEventListener('click', () => {   offset += 1; })
+moins.addEventListener('click', () => {   offset -= 1; })
+
+window.addEventListener('resize', resizeOverlay);
+
+
+
