@@ -116,18 +116,33 @@
 
     // --- 4. Prendre une photo quand le téléphone est horizontal ---
     function takePhoto() {
-      if (!video.videoWidth || !video.videoHeight) return;
-
-      const canvas = document.createElement('canvas');
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      const cctx = canvas.getContext('2d');
-
-      // miroir horizontal pour correspondre à la prévisualisation
-      cctx.translate(canvas.width, 0);
-      cctx.scale(-1, 1);
-
-      cctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        if (!video.videoWidth || !video.videoHeight) return;
+        
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const cctx = canvas.getContext('2d');
+        
+        // miroir horizontal pour correspondre à la prévisualisation
+        cctx.translate(canvas.width, 0);
+        cctx.scale(-1, 1);
+        
+        cctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        cctx.strokeStyle = 'rgba(0, 255, 0, 0.8)';
+        cctx.lineWidth = 2;
+        const w = canvas.width;
+        const h = canvas.height;
+        const cx = w / 2;
+        const cy = h / 2;
+        const size = Math.min(w, h) * 0.05;
+        
+        // croix
+        cctx.beginPath();
+        cctx.moveTo(cx - size, cy);
+        cctx.lineTo(cx + size, cy);
+        cctx.moveTo(cx, cy - size);
+        cctx.lineTo(cx, cy + size);
+        cctx.stroke();
 
       const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
       photoImg.src = dataUrl;
