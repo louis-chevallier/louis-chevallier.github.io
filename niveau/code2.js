@@ -158,8 +158,15 @@ let offset = 0;
       setupOrientation();
     });
 
-plus.addEventListener('click', () => {   offset += 1; })
-moins.addEventListener('click', () => {   offset -= 1; })
+plus.addEventListener('click', () => {
+    offset += 1;
+    console.log(offset);
+})
+moins.addEventListener('click', () => {
+    offset -= 1;
+    console.log(offset);
+    
+})
 
 window.addEventListener('resize', resizeOverlay);
 
