@@ -99,14 +99,14 @@
 
     let lastShotTime = 0;
     const SHOT_COOLDOWN = 3000; // ms
-    const HORIZON_TOLERANCE = 3; // degrés pour considérer l’inclinaison “nulle”
+    const HORIZON_TOLERANCE = 1; // degrés pour considérer l’inclinaison “nulle”
 
     // --- 1. Démarrage de la caméra frontale ---
     async function startCamera() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: {
-            facingMode: 'user' // caméra frontale
+            facingMode: 'environment' //'user' // caméra frontale
           },
           audio: false
         });
@@ -169,8 +169,8 @@
 
       // On considère “horizontal” quand beta et gamma sont proches de 0
       const isHorizontal =
-        Math.abs(beta) <= HORIZON_TOLERANCE &&
-        Math.abs(gamma) <= HORIZON_TOLERANCE;
+        Math.abs(beta - 90) <= HORIZON_TOLERANCE //&&
+        //Math.abs(gamma) <= HORIZON_TOLERANCE;
 
       const now = Date.now();
       if (isHorizontal && now - lastShotTime > SHOT_COOLDOWN) {
