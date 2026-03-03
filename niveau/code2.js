@@ -128,13 +128,13 @@
         cctx.scale(-1, 1);
         
         cctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        cctx.strokeStyle = 'rgba(0, 255, 0, 0.8)';
+        cctx.strokeStyle = 'rgba(255, 0, 0, 0.8)';
         cctx.lineWidth = 2;
         const w = canvas.width;
         const h = canvas.height;
         const cx = w / 2;
         const cy = h / 2;
-        const size = Math.min(w, h) * 0.05;
+        const size = 1; //Math.min(w, h) * 0.05;
         
         // croix
         cctx.beginPath();

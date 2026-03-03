@@ -50,6 +50,31 @@
       z-index: 10;
     }
 
+    #plus {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 18px;
+      text-align: center;
+      color: #0f0;
+      z-index: 10;
+    }
+    #moins {
+      position: absolute;
+      top: 10px;
+      left: 30px;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 18px;
+      text-align: center;
+      color: #0f0;
+      z-index: 10;
+    }
+
     #photo-result {
       position: absolute;
       bottom: 10px;
@@ -83,6 +108,8 @@
       γ (gauche/droite) : <span id="gamma">0</span>°<br/>
       azimut (α) : <span id="alpha">0</span>°
     </div>
+    <div id="plus"> + </div>
+    <div id="moins"> - </div>
     <img id="photo-result" alt="Dernière photo" />
     <button id="btn-orientation-permission" style="display:none;">
       Activer l’orientation
