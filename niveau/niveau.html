@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Caméra + Orientation</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #0f0;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    #container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+    }
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1); /* miroir pour la caméra frontale */
+    }
+    /* Mire centrale */
+    #crosshair {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      margin-left: -20px;
+      margin-top: -20px;
+      pointer-events: none;
+    }
+    #crosshair::before,
+    #crosshair::after {
+      content: "";
+      position: absolute;
+      background: rgba(0,255,0,0.8);
+    }
+    /* ligne horizontale */
+    #crosshair::before {
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 2px;
+      margin-top: -1px;
+    }
+    /* ligne verticale */
+    #crosshair::after {
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      margin-left: -1px;
+    }
+    /* Affichage des angles */
+    #angles {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.5);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <video id="video" autoplay playsinline></video>
+    <div id="crosshair"></div>
+    <div id="angles">
+      <div>Inclinaison avant/arrière (β) : <span id="beta">0</span>°</div>
+      <div>Inclinaison gauche/droite (γ) : <span id="gamma">0</span>°</div>
+      <div>Azimut (α) : <span id="alpha">0</span>°</div>
+    </div>
+  </div>
+
+  <script type="module" src='code.js'>    </script>
+
+</body>
+</html>
+
