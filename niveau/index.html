@@ -57,19 +57,19 @@
       background: rgba(0,0,0,0.5);
       padding: 8px 12px;
       border-radius: 6px;
-      font-size: 18px;
+      font-size: 38px;
       text-align: center;
       color: #0f0;
       z-index: 10;
     }
     #moins {
       position: absolute;
-      top: 50px;
+      top: 70px;
       left: 20px;
       background: rgba(0,0,0,0.5);
       padding: 8px 12px;
       border-radius: 6px;
-      font-size: 18px;
+      font-size: 38px;
       text-align: center;
       color: #0f0;
       z-index: 10;
@@ -103,13 +103,13 @@
     <video id="video" autoplay playsinline></video>
     <canvas id="overlay"></canvas>
     <div id="angles">
-      V correction
+      V correction 11
       β (avant/arrière) : <span id="beta">0</span>°<br/>
       γ (gauche/droite) : <span id="gamma">0</span>°<br/>
       azimut (α) : <span id="alpha">0</span>°
     </div>
-    <div id="plus"> + </div>
-    <div id="moins"> - </div>
+    <input id="plus" type="button" value="+">
+    <input id="moins" type="button" value="-">
     <img id="photo-result" alt="Dernière photo" />
     <button id="btn-orientation-permission" style="display:none;">
       Activer l’orientation
