@@ -13,11 +13,13 @@
 
       async function main(){
           var paragraph = document.getElementById("container");
-          
+/*          
           let pyodide = await loadPyodide({
               stdout: (text) => {paragraph.textContent += text;},
               stderr: (text) => {paragraph.textContent += text;}
           });
+*/
+          let pyodide = await loadPyodide();
           await pyodide.loadPackage("numpy");
           await pyodide.loadPackage("matplotlib");
           await pyodide.loadPackage("scikit-image");
