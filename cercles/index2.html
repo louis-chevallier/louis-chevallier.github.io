@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détecteur Cercles Caméra Frontale</title>
+    <style>
+        body { margin: 0; font-family: Arial; background: #000; color: #fff; }
+        #container { position: relative; width: 100vw; height: 100vh; }
+        #video, #canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        #canvas { pointer-events: none; }
+        #controls { position: absolute; top: 10px; left: 10px; z-index: 10; }
+        button { background: #4a90e2; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #357abd; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <video id="video" autoplay muted playsinline></video>
+        <canvas id="canvas"></canvas>
+        <div id="controls">
+            <button id="start">Démarrer Caméra</button>
+            <button id="stop">Arrêter</button>
+        </div>
+    </div>
+    <script type="module" src='code.js'>    </script>
+
+</body>
+</html>
