@@ -4,12 +4,24 @@
       <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
   </head>
   <body>
+    <div id="container"> xxx </div>
+    
+    
     Pyodide test page <br>
     Open your browser console to see Pyodide output
     <script type="text/javascript">
+
       async function main(){
-        let pyodide = await loadPyodide();
-        console.log(pyodide.runPython(`
+          var paragraph = document.getElementById("container");
+          
+          let pyodide = await loadPyodide({
+              stdout: (text) => {paragraph.textContent += text;},
+              stderr: (text) => {paragraph.textContent += text;}
+          });
+          await pyodide.loadPackage("numpy");
+          await pyodide.loadPackage("matplotlib");
+          await pyodide.loadPackage("scikit-image");
+          console.log(pyodide.runPython(`
 
 print("1");
 import numpy as np
@@ -20,6 +32,14 @@ from skimage.transform import hough_circle, hough_circle_peaks
 from skimage.feature import canny
 from skimage.draw import circle_perimeter
 from skimage.util import img_as_ubyte
+
+print(4);
+
+a = np.ones(shape=(1000, 1000))
+a += 1;
+
+print(44)
+
 
 print("3");
 # Load picture and detect edges
