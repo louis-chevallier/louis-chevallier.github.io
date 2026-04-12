@@ -4,7 +4,7 @@
       <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
   </head>
   <body>
-    <div id="container"> xxx </div>
+    <div id="container"> xxx aaa </div>
     
     
     Pyodide test page <br>
@@ -41,20 +41,27 @@ a = np.ones(shape=(1000, 1000))
 a += 1;
 
 print(44)
-
+print("data", data.coins().shape)
 
 print("3");
 # Load picture and detect edges
 image = img_as_ubyte(data.coins()[160:230, 70:270])
+
+image = np.ones(shape=(1000, 1000))
+
 edges = canny(image, sigma=3, low_threshold=10, high_threshold=50)
 
 print("4");
 # Detect two radii
 hough_radii = np.arange(20, 35, 2)
-hough_res = hough_circle(edges, hough_radii)
-print("5");
-# Select the most prominent 3 circles
-accums, cx, cy, radii = hough_circle_peaks(hough_res, hough_radii, total_num_peaks=3)
+
+
+for n in range(10) :
+	print("xxx", n)
+	hough_res = hough_circle(edges, hough_radii)
+	print("5");
+	# Select the most prominent 3 circles
+	accums, cx, cy, radii = hough_circle_peaks(hough_res, hough_radii, total_num_peaks=3)
 
 # Draw them
 fig, ax = plt.subplots(ncols=1, nrows=1, figsize=(10, 4))
