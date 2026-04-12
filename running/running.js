@@ -398,6 +398,9 @@ function length(d) {
 }
 
 function display(d) {
+    if (typeof d === "undefined") {
+        return;
+    }    
     const keys1 = Object.keys(running_data.runs);
     const xs = d.x
     const dates = d.t
@@ -532,12 +535,14 @@ function blink() {
     //console.log(last_time)
     if (running_data.runs[i_run()].t.length > 0 || last_time === undefined || (dd.getTime() - last_time.getTime()) > 1000) {
         function showPosition(position) {
-            //console.log("show pos")
+            console.log("show pos")
 
 
             //add_rec(position.coords.latitude, position.coords.longitude, position.coords.altitude)
-        }        
-        navigator.geolocation.getCurrentPosition(showPosition);        
+        }
+        console.log("geo1");
+        navigator.geolocation.getCurrentPosition(showPosition);
+        console.log("geo2");        
     }
     display(running_data.runs[i_run()])    
     check()
