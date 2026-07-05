@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    body { font-size: 100px; }
+    input { font-size: 100px; }                        
+    @media only screen and (max-width: 600px) {
+        body { font-size: 32px; }
+        input { font-size: 32px; }                    
+    }
+  </style>
+  
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>EZviz</title>
+    </style>
+  </head>
+<body>
+  <script src="https://MYIP:8092/js/lclog.js"></script>
+  <script type="module" src='code.js'>    </script>
+
+  <div id="label"> </div>
+
+  </script>
+  <input type="button" id="force_on" value="force_on">    
+  <input type="button" id="force_off" value="force_off">    
+  <input type="button" id="auto" value="auto">    
+
+    
+  </body>
+</html>
