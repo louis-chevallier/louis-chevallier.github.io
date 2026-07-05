@@ -29,8 +29,12 @@ map.locate({setView: true, maxZoom: 16});
 
 
 function sendPosition(latitude, longitude, accuracy) {
+
+    var nuc = "http://194.183.210.10:8092";
+    
     console.log("send position");
     var u = location.protocol + "//" + location.host + "/gps/position?"
+    u = nuc + "/gps/position?"
     u = u + "name=" + name.value;
     u = u + "&latitude=" + latitude;
     u = u + "&longitude=" + longitude;

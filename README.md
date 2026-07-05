@@ -1,7 +1,4 @@
 
-
-
-
 - [Niveau](https://louis-chevallier.github.io/niveau)
 - [Running](https://louis-chevallier.github.io/running)
 - [Blog](https://louis-chevallier.github.io/blog/index.md)
@@ -13,4 +10,4 @@
 - [Ezviz]()
 - [Erquy](https://louis-chevallier.github.io/erquy/erquy.html)
 - [Loupe](https://louis-chevallier.github.io/loupe)
-- [GPS](https://louis-chevallier.github.io/gps)
+- [GPS](gps)
