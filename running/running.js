@@ -637,7 +637,9 @@ function load() {
     xhr1.responseType = "json";
 
     if (use_cloud) {
-        xhr1.open("POST", "load?runner=" + runner );
+        var nuc = "http://194.183.210.10:8092";
+        
+        xhr1.open("POST", nuc + "/load?runner=" + runner );
         xhr1.send();
     } else {
         const stored  = localStorage.getItem("running")
