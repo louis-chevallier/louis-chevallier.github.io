@@ -90,41 +90,19 @@ function get_key_value(itemkey) {
              false);
     let r = xhr1.send();
     console.log(r);
-
-    let rr = JSON.parse(decode(xhr1.response));
-    let rr2 = rr.replaceAll(1, rr.length-1);
-    
-    return rr2;
+    let rep = xhr1.response;
+    console.log(rep);
+    let rr2 = rep.substring(1, rep.length-1);
+    console.log(rr2);
+    let rr = JSON.parse(decode(rr2));
+    return rr;
 }
 
 
 
 let dd = { "a" : 34, "b" : 32};
-dd = 37;
 set_key_value("toto", dd);
 console.log(get_key_value('toto'));
-
-
-let dds = JSON.stringify(dd);
-let ddse = encode(dds);
-
-let ddsed = decode(ddse);
-let ddsedus = JSON.parse(ddsed);
-
-console.log(ddsedus);
-//console.log('toto value retrieved from server :', toto_value);
-
-set_key_value("toto", 37);
-toto_value =  get_key_value("toto").replaceAll('"', '');
-console.log('toto value retrieved from server (37) :', toto_value);
-
-console.log(ddse);
-set_key_value("toto", ddse);
-console.log(get_key_value("toto"));
-toto_value =  JSON.parse(decode(get_key_value("toto").replaceAll('"', '')));
-console.log('toto value retrieved from server (dico) :', toto_value);
-
-
 
 
 function i_run() {
