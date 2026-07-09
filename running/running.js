@@ -25,6 +25,25 @@ function* enumerate(iterable) {
         i++;
     }
 }
+const key_value_store_appkey = "g9ksy498";
+
+function get_key_value(itemkey) {
+    const xhr1 = new XMLHttpRequest();
+    xhr1.onreadystatechange = () => {
+        console.log(xhr1.readyState);
+        if (xhr1.readyState === 4) {
+            let response = xhr1.response;
+            console.log("response", response)
+        }
+    };
+    xhr1.open("POST",
+              "https://keyvalue.immanuel.co/api/KeyVal/GetValue/" + key_value_store_appkey + "/" + itemkey,
+             false);
+    let r = xhr1.send();
+    console.log(r);
+    return r;
+}
+console.log('toto value retrieved from server :', get_key_value("toto"));
 
 function i_run() {
     return get_trace_name();
