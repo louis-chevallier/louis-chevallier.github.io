@@ -36,7 +36,7 @@ function get_key_value(itemkey) {
             console.log("response", response)
         }
     };
-    xhr1.open("POST",
+    xhr1.open("GET",
               "https://keyvalue.immanuel.co/api/KeyVal/GetValue/" + key_value_store_appkey + "/" + itemkey,
              false);
     let r = xhr1.send();
