@@ -1,3 +1,4 @@
+
 const plot_div  = document.getElementById('plot');
 const map_div  = document.getElementById('map');
 const controls_div  = document.getElementById('controls');
@@ -17,6 +18,15 @@ const use_cloud_btn = document.getElementById('use_cloud');
 const stats = document.getElementById('stats');
 const trace_delete = document.getElementById('trace_delete');
 
+
+// simplification and derivation on this tree.
+
+
+// simplify an expression
+console.log('simplify expressions')
+console.log(math.simplify('3 + 2 / 4').toString()) // '7 / 2'
+
+
 function* enumerate(iterable) {
     let i = 0;
 
@@ -27,13 +37,52 @@ function* enumerate(iterable) {
 }
 const key_value_store_appkey = "g9ksy498";
 
+
+function encode(txt) {
+    let a = txt.split('').map(function (c, index) {
+        return ("0000" + txt.charCodeAt(index)).slice(-4)
+    });
+    return ''.concat(...a)
+}
+
+function decode(txt) {
+    let a = math.matrix(txt.split(''));
+    let b = math.reshape(a, [-1, 4]).toArray();
+    let c = b.map(function (e, i) {
+        let n = Number(''.concat(...e));
+        return String.fromCharCode(n);        
+    });
+    return ''.concat(...c)    
+}
+
+function set_key_value(itemkey, value) {
+    const xhr1 = new XMLHttpRequest();
+    xhr1.onreadystatechange = () => {
+        //console.log(xhr1.readyState);
+        if (xhr1.readyState === 4) {
+            let response = xhr1.response;
+            console.log("response", response)
+        }
+    };
+    let value_e = encode(JSON.stringify(value));
+    console.log(value_e);
+    url  = "https://keyvalue.immanuel.co/api/KeyVal/UpdateValue/" + key_value_store_appkey + "/" + itemkey + "/" + value_e;
+    
+    xhr1.open("POST",  url, false);
+    console.log("ssss");
+    let r = xhr1.send();
+    console.log(r);
+    return r;
+}
+
 function get_key_value(itemkey) {
     const xhr1 = new XMLHttpRequest();
     xhr1.onreadystatechange = () => {
         console.log(xhr1.readyState);
         if (xhr1.readyState === 4) {
             let response = xhr1.response;
-            console.log("response", response)
+            const obj = JSON.parse(xhr1.responseText);
+            //console.log("response", response)
         }
     };
     xhr1.open("GET",
@@ -41,9 +90,42 @@ function get_key_value(itemkey) {
              false);
     let r = xhr1.send();
     console.log(r);
-    return r;
+
+    let rr = JSON.parse(decode(xhr1.response));
+    let rr2 = rr.replaceAll(1, rr.length-1);
+    
+    return rr2;
 }
-console.log('toto value retrieved from server :', get_key_value("toto"));
+
+
+
+let dd = { "a" : 34, "b" : 32};
+dd = 37;
+set_key_value("toto", dd);
+console.log(get_key_value('toto'));
+
+
+let dds = JSON.stringify(dd);
+let ddse = encode(dds);
+
+let ddsed = decode(ddse);
+let ddsedus = JSON.parse(ddsed);
+
+console.log(ddsedus);
+//console.log('toto value retrieved from server :', toto_value);
+
+set_key_value("toto", 37);
+toto_value =  get_key_value("toto").replaceAll('"', '');
+console.log('toto value retrieved from server (37) :', toto_value);
+
+console.log(ddse);
+set_key_value("toto", ddse);
+console.log(get_key_value("toto"));
+toto_value =  JSON.parse(decode(get_key_value("toto").replaceAll('"', '')));
+console.log('toto value retrieved from server (dico) :', toto_value);
+
+
+
 
 function i_run() {
     return get_trace_name();
