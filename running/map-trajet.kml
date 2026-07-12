@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Untitled layer</name>
+    <Style id="line-000000-1200-normal">
+      <LineStyle>
+        <color>ff000000</color>
+        <width>1.2</width>
+      </LineStyle>
+    </Style>
+    <Style id="line-000000-1200-highlight">
+      <LineStyle>
+        <color>ff000000</color>
+        <width>1.8</width>
+      </LineStyle>
+    </Style>
+    <StyleMap id="line-000000-1200">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-000000-1200-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-000000-1200-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>trajet test terrain de foot</name>
+      <description><![CDATA[953m d'après google]]></description>
+      <styleUrl>#line-000000-1200</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -1.7511885,48.2164946,0
+          -1.7503758,48.2164016,0
+          -1.7503892,48.216264,0
+          -1.7512502,48.2163552,0
+          -1.7512931,48.216189,0
+          -1.7504375,48.2161175,0
+          -1.7504723,48.2159531,0
+          -1.7513199,48.2160335,0
+          -1.751387,48.2158315,0
+          -1.7504804,48.2157457,0
+          -1.7505823,48.2154776,0
+          -1.7514433,48.2155634,0
+          -1.7514969,48.2154633,0
+          -1.7505126,48.2153919,0
+          -1.7502524,48.2164696,0
+          -1.7501022,48.2165124,0
+          -1.7498688,48.2162533,0
+          -1.749732,48.2162015,0
+          -1.749614,48.2162265,0
+          -1.7494558,48.2163927,0
+          -1.7494772,48.2166751,0
+          -1.7495175,48.2171112,0
+          -1.7497186,48.2171469,0
+          -1.7506574,48.2171558,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>
