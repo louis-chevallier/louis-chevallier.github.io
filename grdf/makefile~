@@ -1,0 +1,4 @@
+
+
+start :
+	pandoc --pdf-engine=pdfroff --output=out.pdf
