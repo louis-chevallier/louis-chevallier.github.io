@@ -55,6 +55,14 @@ function decode(txt) {
     return ''.concat(...c)    
 }
 
+const use_immanuel = false; //true;
+
+const my_keyval_server = "http://194.183.210.10:8092/running";
+//const my_keyval_server = "http://localhost:8092/running";
+
+const my_app_key="0000";
+
+
 function set_key_value(itemkey, value) {
     const xhr1 = new XMLHttpRequest();
     xhr1.onreadystatechange = () => {
@@ -66,7 +74,12 @@ function set_key_value(itemkey, value) {
     };
     let value_e = encode(JSON.stringify(value));
     console.log(value_e);
-    url  = "https://keyvalue.immanuel.co/api/KeyVal/UpdateValue/" + key_value_store_appkey + "/" + itemkey + "/" + value_e;
+
+    if (use_immanuel) {
+        url  = "https://keyvalue.immanuel.co/api/KeyVal/UpdateValue/" + key_value_store_appkey + "/" + itemkey + "/" + value_e;
+    } else {
+        url = `${my_keyval_server}/UpdateValue?app_key=${my_app_key}&key=${itemkey}&value=${value_e}`
+    }
     
     xhr1.open("POST",  url, false);
     console.log("ssss");
@@ -81,12 +94,19 @@ function get_key_value(itemkey) {
         console.log(xhr1.readyState);
         if (xhr1.readyState === 4) {
             let response = xhr1.response;
-            const obj = JSON.parse(xhr1.responseText);
-            //console.log("response", response)
+            console.log("response", response)            
+            //const obj = JSON.parse(xhr1.responseText);
+
         }
     };
+    if (use_immanuel) {
+        url = "https://keyvalue.immanuel.co/api/KeyVal/GetValue/" + key_value_store_appkey + "/" + itemkey;
+        33;
+    } else {
+        url = `${my_keyval_server}/GetValue?app_key=${my_app_key}&key=${itemkey}`;
+    }
     xhr1.open("GET",
-              "https://keyvalue.immanuel.co/api/KeyVal/GetValue/" + key_value_store_appkey + "/" + itemkey,
+              url,
              false);
     let r = xhr1.send();
     console.log(r);
