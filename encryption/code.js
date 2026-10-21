@@ -1,3 +1,5 @@
+const label  = document.getElementById('label');
+
 const safe = new class {
   #key = '';
 
@@ -15,8 +17,15 @@ const safe = new class {
       name: 'SHA-256'
     }, this.#encoder.encode(password)).then(result => crypto.subtle.importKey('raw', result, {
       name: 'AES-CBC'
-    }, true, ['encrypt', 'decrypt']));
+    }, true, ['encrypt', 'decrypt'])) ;
+
+      
   }
+
+    async refresh() {
+        label.innerHTML = #key;
+    }
+    
   async decrypt(string) {
     // compatibility fix
     string = string.replace('data:application/octet-binary;base64,', '');
@@ -31,6 +40,21 @@ const safe = new class {
     const ab = (new Uint8Array(result)).subarray(16);
     return this.#decoder.decode(ab);
   }
-}
-await safe.open('PASSWORD');
-await safe.decrypt('ENCRYPTED_STRING');
+};
+
+(async () => {
+    const d = await safe.open('PASSWORD');
+    //await safe.decrypt('ENCRYPTED_STRING');
+    label.innerHTML = "done";
+    //const response = await fetch('/api/data');
+    //const data = await response.json();
+    console.log(d);
+})();
+
+
+const intervalId = setInterval(() => {
+    safe.refresh();
+
+}, 1000);
+
+
